@@ -1,4 +1,5 @@
 class Item:
+    pay_rate = 0.8 #the pay rate after 20% discount
 
     def __init__(self,name :str,price: float ,quantity=0):
         #Run validations to the received arguments
@@ -15,10 +16,12 @@ class Item:
     
     def calculate_total_price(self):
         return self.price * self.quantity
+    
+    def apply_discount(self):
+        self.price = self.price * Item.pay_rate
 
 
-item1 = Item("Phone",100,-1)
-item2 = Item("Laptop",1000,3)
+item1 = Item("Phone",100,1)
+item1.apply_discount()
+print(item1.price)
 
-print(item1.calculate_total_price())
-print(item2.calculate_total_price())
